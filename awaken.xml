@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Github -->
+  <remote  name="github"
+           fetch="https://github.com/" />
+
+  <!-- GitHub (Project-Awaken) -->
+  <remote  name="awaken"
+           fetch="https://github.com/Project-Awaken-Twelve"
+           revision="12" />
+
+  <!-- GitLab -->
+  <remote  name="gitlab"
+           fetch="https://gitlab.com"/>
+
+  <!-- Manifest -->
+  <project path="manifest" name="manifest" remote="awaken" groups="awaken" />
+
+  <!-- Build repositories -->
+  <project path="build/make" name="android_build" remote="awaken" groups="awaken" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="android_build_soong" remote="awaken" groups="awaken" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- Hardware -->
+  <project path="hardware/libhardware" name="android_hardware_libhardware" remote="awaken" groups="awaken" />
+  <project path="hardware/awaken/interfaces" name="android_hardware_awaken_interfaces" remote="awaken" groups="awaken" />
+
+  <!-- Frameworks -->
+  <project path="frameworks/av" name="android_frameworks_av" remote="awaken" groups="awaken" />
+  <project path="frameworks/base" name="android_frameworks_base" remote="awaken" groups="awaken" />
+  <project path="frameworks/native" name="android_frameworks_native" remote="awaken" groups="awaken" />
+
+  <!-- Packages -->
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="awaken" groups="awaken" />
+
+  <!-- System -->
+  <project path="system/bpf" name="android_system_bpf" remote="awaken" groups="awaken" />
+  <project path="system/core" name="android_system_core" remote="awaken" groups="awaken" />
+  <project path="system/netd" name="android_system_netd" remote="awaken" groups="awaken" />
+
+  <!-- Recovery -->
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="awaken" groups="awaken" />
+
+  <!-- Vendor -->
+  <project path="vendor/awaken" name="android_vendor_awaken" remote="awaken" groups="awaken" />
+
+  <!-- Sepolicy -->
+  <project path="device/qcom/sepolicy" name="android_device_qcom_sepolicy" remote="awaken" groups="awaken" />
+  <project path="device/qcom/sepolicy_vndr" name="android_device_qcom_sepolicy_vndr" remote="awaken" groups="awaken" />
+  <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="awaken" groups="awaken" />
+
+  <!-- CAF Additions -->
+  <project path="vendor/qcom/opensource/power" name="android_vendor_qcom_opensource_power" remote="awaken" groups="awaken" />
+  <project path="vendor/qcom/opensource/vibrator" name="android_vendor_qcom_opensource_vibrator" remote="awaken" groups="awaken" />
+
+</manifest>
